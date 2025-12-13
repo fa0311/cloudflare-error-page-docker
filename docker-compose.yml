@@ -1,11 +1,10 @@
-version: "3.8"
 services:
-  app:
-    build: .
+  cloudflare-error-page:
+    image: ghcr.io/fa0311/cloudflare-error-page-docker:latest
     volumes:
-      - params.json:/app/params.json:ro
+      - ./params.json:/app/params.json:ro
     ports:
-      - "8080:5000"
+      - "5050:5000"
     environment:
       - HOST=0.0.0.0
       - PORT=5000
