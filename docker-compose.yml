@@ -1,7 +1,9 @@
-version: '3.8'
+version: "3.8"
 services:
   app:
     build: .
+    volumes:
+      - params.json:/app/params.json:ro
     ports:
       - "8080:5000"
     environment:
