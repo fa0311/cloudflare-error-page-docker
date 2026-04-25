@@ -3,8 +3,10 @@ FROM python:3.11-slim
 WORKDIR /app
 COPY . .
 
-RUN apt-get update && rm -rf /var/lib/apt/lists/*
-RUN apt-get install -y curl
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends curl \
+    && rm -rf /var/lib/apt/lists/*
+
 RUN pip install ./cloudflare-error-page
 RUN pip install -e .
 
