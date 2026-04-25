@@ -10,5 +10,6 @@ RUN apt-get update \
 RUN pip install ./cloudflare-error-page
 RUN pip install -e .
 
+HEALTHCHECK --interval=1m --timeout=5s --start-period=20s --retries=1 CMD curl -sS -o /dev/null http://localhost:5000
 EXPOSE 5000
 CMD ["python", "-m", "cloudflare_error_page_docker"]
