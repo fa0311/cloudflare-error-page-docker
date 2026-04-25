@@ -4,6 +4,7 @@ WORKDIR /app
 COPY . .
 
 RUN apt-get update && rm -rf /var/lib/apt/lists/*
+RUN apt-get install -y curl
 RUN pip install ./cloudflare-error-page
 RUN pip install -e .
 
